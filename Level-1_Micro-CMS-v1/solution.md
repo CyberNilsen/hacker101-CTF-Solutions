@@ -58,7 +58,7 @@ While exploring the application, I noticed that editing pages changed the URL pa
 ### Exploitation
 I began testing for SQL injection by manipulating the URL parameters. When I added a single quote (`'`) to the URL parameter, the application behavior changed significantly.
 
-![SQL-quote](SQL-quote.png)
+![SQL-quote](SQL-qoute.png)
 *SQL injection attempt revealing database error and flag*
 
 The quote mark triggered what appeared to be a SQL error, which inadvertently exposed the second flag.
