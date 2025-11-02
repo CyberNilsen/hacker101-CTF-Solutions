@@ -56,7 +56,7 @@ Welcome to my comprehensive collection of solutions and walkthroughs for [Hacker
 │   │   └── screenshots/
 │   └── 📁 micro-cms-v1/
 │       ├── solution.md
-│       └── screenshots/
+│       └── screenshots
 ├
 │   And etc
 ```
