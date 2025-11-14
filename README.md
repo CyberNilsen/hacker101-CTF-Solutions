@@ -53,7 +53,7 @@ Welcome to my comprehensive collection of solutions and walkthroughs for [Hacker
 📦 hacker101-ctf-solutions/
 ├── ├── 📁 a-little-something/
 │   │   ├── solution.md
-│   │   └── screenshots/
+│   │   └── screenshots
 │   └── 📁 micro-cms-v1/
 │       ├── solution.md
 │       └── screenshots
